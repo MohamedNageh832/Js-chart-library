@@ -554,16 +554,3 @@ class ChartAutoUI {
     }
   }
 }
-
-let test = new Chart({
-  width: 480,
-  height: 240,
-  chartDirection: "rtl",
-  xAxis: { label: "اليوم", min: 0, max: 30, steps: 10 },
-  yAxis: { label: "عدد المستخدمين", min: 0, max: 30, steps: 6 },
-  grid: "on",
-  gridDirection: "both",
-  animate: 3,
-});
-
-test.mountTo(document.querySelector(".stats-holder"));
