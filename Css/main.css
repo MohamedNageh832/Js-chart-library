@@ -1,0 +1,111 @@
+/* Start chart */
+.chart-holder {
+  width: fit-content;
+  margin: auto;
+}
+
+.chart__title {
+  font-size: 16px;
+}
+
+.chart {
+  user-select: none;
+}
+
+/* TODO: make chart rtl direction with pure css */
+
+.chart__axis {
+  stroke: #aaa;
+  stroke-width: 1px;
+}
+
+.chart__grid-line {
+  stroke: rgba(0, 0, 0, 0.08);
+}
+
+.chart__reading {
+  fill: #767676;
+  font-size: 12px;
+}
+
+.chart__tooltip {
+  position: fixed;
+  transform: translate(-50%, -50%);
+  display: none;
+  z-index: 2;
+  width: fit-content;
+  padding: 0.5rem;
+  border-radius: 5px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+  background-color: #fff;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.chart__tooltip.show,
+.chart__tooltip.active {
+  display: block;
+}
+
+.chart__tooltip * {
+  margin: 0;
+}
+
+.Chart__tooltip__title {
+  width: 100%;
+  border-bottom: 1px solid #aaa;
+  margin-bottom: 0.25rem;
+}
+
+.Chart__tooltip__body {
+  color: #767676;
+}
+
+.chart__point {
+  z-index: 4;
+  stroke: #038aff;
+  stroke-width: 2;
+  fill: #fff;
+  cursor: pointer;
+}
+
+.chart__point:hover,
+.chart__point.active {
+  fill: #038aff;
+}
+
+.chart__line {
+  z-index: 1;
+  stroke: #038aff;
+  stroke-width: 1.5;
+  fill: none;
+  animation-name: moveSmooth;
+  animation-fill-mode: forwards;
+  animation-timing-function: ease-in-out;
+}
+
+.chart__block {
+  fill: #038aff;
+}
+
+.chart__overlay {
+  fill: transparent;
+}
+
+@keyframes moveSmooth {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+/* Start media queries*/
+@media (max-width: 490px) {
+  .chart__line {
+    stroke-width: 2px;
+  }
+
+  .chart__point {
+    stroke-width: 3;
+  }
+}
+/* End media queries*/
