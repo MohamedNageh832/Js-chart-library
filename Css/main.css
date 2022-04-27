@@ -26,6 +26,7 @@
 .chart__reading {
   fill: #767676;
   font-size: 12px;
+  transition: 0.35s;
 }
 
 .chart__tooltip {

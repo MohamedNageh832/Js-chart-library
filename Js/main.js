@@ -26,7 +26,7 @@ class Chart {
   }
 
   draw(data, style) {
-    ChartAutoUI.adjustYReadings(this.body, data, this.chartProps);
+    ChartAutoUI.adjustScaling(this.body, data, this.chartProps);
 
     if (style === "line")
       ChartStyles.lineChart(this.body, data, this.chartProps);
@@ -54,6 +54,7 @@ class Chart {
 
     ChartAutoUI.adjustHeight(this.body, this.width, this.height);
     ChartAutoUI.adjustResponsive(this.body, this.width);
+    ChartAutoUI.adjustXReadings(this.body);
 
     window.addEventListener("resize", () => {
       ChartAutoUI.adjustHeight(this.body, this.width, this.height);
@@ -481,23 +482,23 @@ class ChartAutoUI {
     );
 
     const totalWidth = xReadings.reduce(
-      (totalWidth, el) => totalWidth + el.getBoundingClientRect().width,
+      (totalWidth, el) => totalWidth + 7 * el.textContent.length,
       0
     );
 
     if (totalWidth > chart.getBoundingClientRect().width) {
       xReadings
         .slice(0, xReadings.length - 1)
-        .forEach((el) => (el.style.display = "none"));
+        .forEach((el) => (el.style.opacity = "0"));
     } else {
       xReadings
         .slice(0, xReadings.length - 1)
-        .forEach((el) => (el.style.display = "inline-block"));
+        .forEach((el) => (el.style.opacity = "1"));
     }
   }
 
   // Adjust y-axis readings and correcting height with respect to new reading
-  static adjustYReadings(chart, data, chartProps) {
+  static adjustScaling(chart, data, chartProps) {
     const { width, yAxis, chartDirection } = chartProps;
     const maxReading = Math.max(...data);
 
