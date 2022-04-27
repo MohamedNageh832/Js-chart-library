@@ -481,7 +481,7 @@ class ChartAutoUI {
     );
 
     const totalWidth = xReadings.reduce(
-      (totalWidth, el) => totalWidth + el.getBoundingClientRect().width,
+      (totalWidth, el) => totalWidth + 7 * el.textContent.length,
       0
     );
 
